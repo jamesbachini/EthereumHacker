@@ -84,6 +84,11 @@
       </div>
     </div>
 
+    <div id="intro" style="position: fixed; left: 0; right: 0; top: 75px; bottom: 0; display: none; background: #000000EE; text-align: center;">
+      <div id="intro-text" style="color: #0F0; font-size: 1.2em; margin: 5% auto; text-align: left; width: 600px;"></div>
+      <button id="skip-intro" onclick="skipIntro()" style="">SKIP INTRO</button>
+    </div>
+
     <div id="mobile-message" style="position: fixed; left: 0; right: 0; top: 75px; bottom: 0; display: none; background: #000000EE; padding: 5%;">Unfortunately it is not currently possible to play on a mobile device.<br><br>You will need to use remix, metamask and etherscan to complete the challenges so log in to a laptop and join your team</div>
 
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
@@ -115,7 +120,7 @@
       }
 
       const addComs = async (who,html) => {
-        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: center;"><div><img src="img/${who.toLowerCase()}.png" alt="${who}" style="height: 80px; min-width: 80px;" /></div><div style="padding-left: 20px;"><div style="color:#2878a3; font-weight:bold;">${who}</div><div>${html}</div></div></div>`;
+        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;"><div><img src="img/${who.toLowerCase()}.png" alt="${who}" style="height: 80px; min-width: 80px;" /></div><div style="padding-left: 20px;"><div style="color:#2878a3; font-weight:bold;">${who}</div><div>${html}</div></div></div>`;
         document.getElementById('coms').innerHTML += formattedHTML;
         document.getElementById('coms').scrollTop = document.getElementById('coms').scrollHeight;
       }
@@ -124,6 +129,7 @@
         while (!level.newMessage) {
           await wait(1000);
         }
+        level.lastMessage = level.newMessage;
         delete level.newMessage;
         return true;
       }
@@ -133,6 +139,7 @@
         level.newMessage = msg;
         addComs('Me',msg);
         document.getElementById('user-message').value = '';
+        if (msg.toLowerCase().includes('help')) help();
       }
       document.getElementById('send-message').onclick = userMessage;
 
@@ -157,17 +164,17 @@
         await wait(3000);
         addComs('Sophie',`Uploading further instructions to your panel now, message me when you have an NFT in your wallet`);
         await wait(500);
-        addInstructions(`Let's start by getting metamask setup. Download it here if you haven't got it already and set up a new wallet: <a href="https://metamask.io" target="_blank" />https://metamask.io</a> If you already have metamask it is still worth setting up a new wallet from the one you use for your main funds`);
+        await addInstructions(`Let's start by getting metamask setup. Download it here and set up a new wallet: <a href="https://metamask.io" target="_blank" />https://metamask.io</a> If you already have metamask it is still worth setting up a new wallet from the one you use for your main funds`);
         await wait(500);
-        addInstructions(`Change the network at the top of metamask to "Goerli Test Network". Testnets are a playground for developers and hackers alike!<br><img src="img/level1-metamask.jpg" style="border: 3px solid #222;" />`);
+        await addInstructions(`Change the network at the top of metamask to "Goerli Test Network". Testnets are a playground for developers and hackers alike!<br><img src="img/level1-metamask.jpg" style="border: 3px solid #222;" />`);
         await wait(500);
-        addInstructions(`Go ahead and connect your wallet to the WarDesk platform, click connect in the top right corner of this page and confirm in Metamask.`);
+        await addInstructions(`Go ahead and connect your wallet to the WarDesk platform, click connect in the top right corner of this page and confirm in Metamask.`);
         await wait(500);
-        addInstructions(`Next get some Goerli testnet Ether to work with, there's a faucet here which should work <a href="https://goerli-faucet.pk910.de/" target="_blank">https://goerli-faucet.pk910.de/</a> If not try Googling "Goerli faucet" and see what comes up. You'll need some free testnet ETH to execute transactions. Be careful what you sign on 3rd party sites, you did set up a separate wallet right?`);
+        await addInstructions(`Next get some Goerli testnet Ether to work with, there's a faucet here which should work <a href="https://goerli-faucet.pk910.de/" target="_blank">https://goerli-faucet.pk910.de/</a> If not try Googling "Goerli faucet" and see what comes up. You'll need some free testnet ETH to execute transactions. Be careful what you sign on 3rd party sites, you did set up a separate wallet right?`);
         await wait(500);
-        addInstructions(`Now head over to Etherscan and check out that NFT contract: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">https://goerli.etherscan.io/address/${level.contract}#code</a> Note you can switch between code, read functions and write functions using these buttons on etherscan.<br><img src="img/level1-etherscan.png" style="max-width: 300px; border: 3px solid #222;" />`);
+        await addInstructions(`Now head over to Etherscan and check out that NFT contract: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">https://goerli.etherscan.io/address/${level.contract}#code</a> Note you can switch between code, read functions and write functions using these buttons on etherscan.<br><img src="img/level1-etherscan.png" style="max-width: 300px; border: 3px solid #222;" />`);
         await wait(500);
-        addInstructions(`In the "Write Contract" section there is an option to "🔴 Connect To Web3", this will connect your wallet to Etherscan. We can then fire off transactions such as the mint function which when we copy and paste our address from metamask into the "_to" field and click mint should send us an NFT. Unfortunately they've sold out already so you'll have to check the code and figure out a way to hack the contract. Send us a message in the chat window when you have an NFT, good luck.`);
+        await addInstructions(`In the "Write Contract" section there is an option to "🔴 Connect To Web3", this will connect your wallet to Etherscan. We can then fire off transactions such as the mint function which when we copy and paste our address from metamask into the "_to" field and click mint should send us an NFT. Unfortunately they've sold out already so you'll have to check the code and figure out a way to hack the contract. Send us a message in the chat window when you have an NFT, good luck.`);
         await wait(500);
         document.getElementById('instructions').scrollTop = 0;
         setTimeout(() => {
@@ -188,18 +195,83 @@
             addComs('James',`Great work! You have completed the first level and are set up to take on your next challenge`);
             localStorage.setItem('s1e1', true);
             await wait(2000);
-            level = {};
             menu();
           }
         }
       }
 
       const level2 = async () => {
-        alert('Coming Soon, Try Level 1');
+        await startNewLevel(2);
+        level.contract = `0x484Ec30Feff505b545Ed7b905bc25a6a40589181`;
+        await wait(1000);
+        addComs('Cathy',`Good work on the NFT, I'm in! Now we need to find out who is behind this`);
+        await wait(2000);
+        addComs('Sophie',`If we can find the whale's wallet address that might give us some clues as to who it is. What do we know about them?`);
+        await wait(4000);
+        addComs('James',`We know they hold a bunch of the Gala NFT's including Token ID 45, perhaps we can write some code in Remix to figure out which address it is...`);
+        await wait(4000);
+        addComs('James',`Here is that NFT contract address again: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a> Sophie will provide some instructions on setting up a smart contract to figure this out`);
+        await wait(3000);
+        addComs('Sophie',`On it`);
+        await wait(500);
+        await addInstructions(`Head over to <a href="https://remix.ethereum.org" target="_blank">https://remix.ethereum.org</a> this is an online Solidity code editor which we can connect to the Goerli testnet via metamask. We are going to use it to write a simple smart contract and expose the whale.`);
+        await wait(500);
+        await addInstructions(`On the left hand side we can navigate to the contracts folder, then create a new file and call it Whale.sol like in this screenshot.<br><img src="img/level2-newfile.jpg" style="border: 3px solid #222; width: 300px;" />`);
+        await wait(500);
+        await addInstructions(`If you can figure out how to do it from here then go ahead if not type help in the chat window and the team can assist you. Once you know the whale's address send it via the chat window.`);
+        await wait(500);
+        setTimeout(async () => {
+          if (level.id !== 2) return false;
+          addComs('James',`We should probably import the Openzeppelin interface to connect to the contract. I'll put an example of what I'm thinking in the terminal:`);
+          await wait(1000);
+          await addInstructions(`<pre><code>// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+
+contract Whale {
+    function checkBalance() public view returns (uint256) {
+        return IERC721(${level.contract}).balanceOf(msg.sender);
+    }
+}</code></pre>`);
+          await wait(1000);
+          addComs('James',`That's close but it's not quite right. Once you have it figured out deploy the contract to Goerli and run the function. Sophie will provide further instructions on that shortly.`);
+        }, 30000);
+        setTimeout(async () => {
+          if (level.id !== 2) return false;
+          addComs('Sophie',`Let's go through how to compile and deploy a contract using Remix. You can copy and paste the example in the instructions to start with or use your own.`);
+          await wait(1000);
+          await addInstructions(`In Remix, on the left hand side tool bar, the 3rd item down is a little "S" shaped icon. Click that and it should take you to the compile page. Click the big blue button that says "Compile Whale.sol". Any errors in your contract will usually show up here.`);
+          await wait(1000);
+          await addInstructions(`Next tool bar icon down is an Ethereum shaped icon. Click that and it should take you to the deploy page.<ul><li>Change Environment to "Injected Web3"</li><li>Change Contract to "Whale - contracts/Whale.sol"</li><li>Click deploy and confirm the transaction in Metamask</li><li>At the bottom of that task bar there is a section for deployed contracts</li><li>Expand yours and you should have buttons for the contract functions</li></ul><br><img src="img/level2-contract.jpg" style="border: 3px solid #222; width: 300px;" />`);
+          await wait(3000);
+        }, 90000);
+        while (!level.complete) {
+          await waitForInput();
+          if (level.lastMessage.toLowerCase().includes('0x123e710c69b6806ef32cf52e49dcc5eeec368a22')) level.complete = true;
+          if (level.complete) {
+            addComs('James',`Got him. Great work! Let's Go`);
+            localStorage.setItem('s1e2', true);
+            await wait(2000);
+            menu();
+          }
+        }
       }
 
       const level3 = async () => {
         alert('Coming Soon, Try Level 1');
+      }
+
+      const help = async () => {
+        if (!level.help) level.help = 0;
+        if (level.id == 2) {
+          if (level.help < 1) addComs('Sophie',`There is an ownerOf() function in that contract which looks interesting...`);
+          if (level.help < 2) addComs('James',`We need to modify the contract I sent you to use ownerOf(45) instead of the balanceOf() function.`);
+          if (level.help < 3) addComs('James',`Don't forget we need to return an address from the function rather than a number/uint256.`);
+          if (level.help < 4) addComs('Sophie',`You can probably find out more about using remix on YouTube if you are stuck`);
+          if (level.help >= 5) addComs('James',`There's an example contract here which should do it`);
+        }
+        level.help += 1;
       }
 
       const menu = async () => {
@@ -221,9 +293,42 @@
         document.getElementById('instructions').innerHTML = '';
       }
 
+      const intro = async () => {
+        startNewLevel('intro');
+        if (localStorage.getItem('intro')) {
+          menu();
+          return false;
+        }
+        document.getElementById('intro').style.display = 'block';
+        await type('intro-text','The year is 2032 and a major super power is threatening to launch a central bank digital currency');
+        await type('intro-text','This will threaten our global reserve status, the worlds economy and democracy as we know it');
+        await type('intro-text','A special team of black ops ethereum hackers has been put together to prevent this happening');
+        await type('intro-text','Use your Web3 skills to help the war desk prevent an economic and social collapse of society');
+        await wait(5000);
+        document.getElementById('intro').style.display = 'none';
+        menu();
+      }
+
+      const skipIntro = async () => {
+        localStorage.setItem('intro', true);
+        document.getElementById('intro').style.display = 'none';
+        level = {};
+        menu();
+      }
+
+      const type = async (id,html) => {
+        let i = 0;
+        while (i < html.length) {
+          document.getElementById(id).innerHTML += html.substring(i, i+1)
+          i++;
+          await wait(40);
+        }
+        document.getElementById(id).innerHTML += '<br /><br />';
+      }
+
       const init = async() => {
         await wait(500);
-        menu();
+        await intro();
         document.getElementById('user-message').addEventListener('keyup', function(event) {
           event.preventDefault();
           if (event.keyCode === 13) userMessage();
