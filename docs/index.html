@@ -108,7 +108,7 @@
       let level = {};
 
       const addInstructions = async (html) => {
-        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: center;"><div style="font-size: 3em; color: #2878a3;">&gt;</div><div style="padding-left: 20px; color: #0F0;">${html}</div></div><hr style="width: 60%; margin: 10px auto; color: #2878a3;">`;
+        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: top;"><div style="font-weight: bold; color: #0F0;">&gt;</div><div style="padding-left: 10px; color: #0F0;">${html}</div></div><hr style="width: 100%; margin: 20px 0px; color: #111;">`;
         document.getElementById('instructions').innerHTML += formattedHTML;
         document.getElementById('instructions').scrollTop = document.getElementById('coms').scrollHeight;
       }
