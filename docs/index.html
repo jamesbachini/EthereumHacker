@@ -207,6 +207,10 @@
       const init = async() => {
         await new Promise(r => setTimeout(r, 500));
         menu();
+        document.getElementById('user-message').addEventListener('keyup', function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) userMessage();
+        });
       }
       init();
     </script>
