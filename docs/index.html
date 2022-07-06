@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WarDesk | A Black Ops Ethereum Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@300;400;600&family=Inter&display=swap" rel="stylesheet"> 
+    <style>
+
+      html { background: url(img/bkg.png) no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover; height: 100%; }
+      body { font-family: "Share Tech Mono", sans-serif; color: #CCC; margin: 0px; background: #00000088; height: 100%; }
+      button { width: 120px; height: 30px; border: 2px solid #CCC; border-radius: 3px; background: #000; color: #CCC; cursor: pointer; margin: 5px; box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5); border: solid 2px transparent; background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #2878a3, #8a1a86); background-origin: border-box; background-clip: content-box, border-box; box-shadow: 2px 1000px 1px #000 inset; }
+      input[type=text] { width: 80px; height: 24px; }
+      th { border-bottom: 1px solid #444; font-size: 1.1em; }
+      img { max-width: 100%; }
+      a { color: #2878a3; }
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { box-shadow: inset 0 0 5px #222; border-radius: 15px; }
+      ::-webkit-scrollbar-thumb { background-color: #333; border-radius: 15px; }
+      div { scrollbar-color: #333 #111; }
+      @media screen and (max-width: 1020px) {
+        .mobile-hidden { display: none; }
+        #main { display: none !important; }
+        #mobile-message { display: block !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="menu" style="display: none; position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: #000000AA;">
+      <div style="position: fixed; left: 10%; right: 10%; top: 75px; bottom: 10%; border: 5px solid #222; background: #000; text-align: center;">
+        <h1><span style="color: #2878a3;">War</span><span style="font-style:italic; color: #8a1a86;">DESK</span> Series 1</h1>
+        <div style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%;">
+          <div style="flex: 1 1 auto; cursor:pointer; border: 3px solid #111; padding: 5px; margin: 10px 3%;" onclick="level1();">
+            <h2 style="color: #2878a3;">THE GALA NFT</h2>
+            <h3>Episode 1</h3>
+            <img src="img/level1-thumb.png?v3=5" style="opacity: 0.6;" />
+            <p style="color: #888;">Help get our agent into the Gala NFT Party by hacking a NFT contract</p>
+            <p id="s1e1" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
+          </div>
+          <div style="flex: 1 1 auto; cursor:pointer; border: 3px solid #111; padding: 5px; margin: 10px 3%;" onclick="level2();">
+            <h2 style="color: #2878a3;">FIND THE WHALE</h2>
+            <h3>Episode 2</h3>
+            <img src="img/level2-thumb.png" style="opacity: 0.6;" />
+            <p style="color: #888;">There is a large token holder at the party, let's uncover who they are</p>
+            <p id="s1e2" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
+          </div>
+          <div style="flex: 1 1 auto; cursor:pointer; border: 3px solid #111; padding: 5px; margin: 10px 3%;" onclick="level3();">
+            <h2 style="color: #2878a3;">BREAK THE MULTISIG</h2>
+            <h3>Episode 3</h3>
+            <img src="img/level3-thumb.png" style="opacity: 0.6;" />
+            <p style="color: #888;">Break a multisignature wallets safety function to gain access to the funds</p>
+            <p id="s1e3" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%;">
+      <div style="flex: 1 1 auto; text-align: left; font-size: 1.4em; font-weight: bold;">
+        <img src="img/logo.svg" style="height:60px; margin-bottom: -20px; margin-left: 10px;" />
+        <span style="color: #2878a3; font-size: 1.5em;">War</span><span style="font-style:italic; font-size:1.2em; color: #8a1a86;">DESK</span><span style="color: #777;">.eth</span>
+        <div style="font-size: 0.57em; margin-left: 83px; color: #555;">BLACK OPS ETHEREUM GAME</div>
+      </div>
+      <div style="flex: 1 1 auto; text-align: right; padding: 1%;">
+        <span style="font-size:0.6em; color: #333;" class="wallet-address"></span>
+        <button id="connect">CONNECT</button>
+      </div>
+    </div>
+
+    <div id="main" style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%; height: 80%;">
+      <div id="panel1" style="flex: 2 1 0; background: #000000AA; height: 100%; border: 5px solid #222; margin: 1%; padding: 1%; overflow: hidden;">
+        <div id="instructions" style="height: 100%; overflow-x: hidden; overflow-y: scroll; overflow-wrap: break-word; word-break: break-word; padding-right: 15px;"></div>
+      </div>
+      <div id="panel2" style="flex: 1 1 0; background: #000000AA; height: 100%; border: 5px solid #222; margin: 1%; padding: 1%; overflow: hidden;">
+        <div style="display: flex; flex-direction: column; height: 100%;">
+          <div id="coms" style="flex: 8 1 0; overflow-x: hidden; overflow-y: scroll; height: 100%; overflow-wrap: break-word; word-break: break-word; padding-right: 15px;"></div>
+          <div id="chat" style="flex: 1 1 0;">
+            <input type="text" id="user-message" style="width: 70%;" />
+            <button id="send-message" style="width: 20%;">SEND</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-message" style="padding: 20%; display: none;">Unfortunately it is not currently possible to play on a mobile device.<br><br>You will need to use remix, metamask and etherscan to complete the challenges so log in to a laptop and join your team</div>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script>
+      let provider; 
+      let signer;
+      let userAddress;
+
+      const connect = async () => {
+        provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+        await provider.send("eth_requestAccounts", []);
+        signer = provider.getSigner()
+        userAddress = await signer.getAddress();
+        const { chainId } = await provider.getNetwork()
+        if (chainId !== 5) alert('Please set your network to "Goerli Test Network"');
+        document.querySelectorAll('.wallet-address').forEach(el => el.innerHTML = `${userAddress.substr(0,8)}...`);
+        document.getElementById('connect').innerHTML = 'CONNECTED';
+        window.ethereum.on('accountsChanged', () => { connect() });
+        window.ethereum.on('network', () => { connect() });
+      }
+      document.getElementById('connect').onclick = connect;
+
+      let level = {};
+
+      const addInstructions = async (html) => {
+        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: center;"><div style="font-size: 3em; color: #2878a3;">&gt;</div><div style="padding-left: 20px; color: #0F0;">${html}</div></div><hr style="width: 60%; margin: 10px auto; color: #2878a3;">`;
+        document.getElementById('instructions').innerHTML += formattedHTML;
+        document.getElementById('instructions').scrollTop = document.getElementById('coms').scrollHeight;
+      }
+
+      const addComs = async (who,html) => {
+        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: center;"><div><img src="img/${who.toLowerCase()}.png" alt="${who}" style="height: 80px; min-width: 80px;" /></div><div style="padding-left: 20px;"><div style="color:#2878a3; font-weight:bold;">${who}</div><div>${html}</div></div></div>`;
+        document.getElementById('coms').innerHTML += formattedHTML;
+        document.getElementById('coms').scrollTop = document.getElementById('coms').scrollHeight;
+      }
+
+      const waitForInput = async () => {
+        while (!level.newMessage) {
+          await new Promise(r => setTimeout(r, 1000));
+        }
+        delete level.newMessage;
+        return true;
+      }
+
+      const userMessage = async () => {
+        const msg = document.getElementById('user-message').value;
+        level.newMessage = msg;
+        addComs('Me',msg);
+        document.getElementById('user-message').value = '';
+      }
+      document.getElementById('send-message').onclick = userMessage;
+
+      const level1 = async () => {
+        document.getElementById('menu').style.display = 'none';
+        level.id = 1;
+        level.contract = `0x484Ec30Feff505b545Ed7b905bc25a6a40589181`;
+        await new Promise(r => setTimeout(r, 2000));
+        addComs('James',`We have a code red and need your help`);
+        await new Promise(r => setTimeout(r, 4000));
+        addComs('Cathy',`I'm trying to get into the gala party but they are scanning for an NFT at the door`);
+        await new Promise(r => setTimeout(r, 4000));
+        addComs('Sophie',`The NFTs are sold out and we need you to figure out a way to hack the contract and mint one`);
+        await new Promise(r => setTimeout(r, 3000));
+        addComs('James',`NFT contract address is: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
+        await new Promise(r => setTimeout(r, 3000));
+        addComs('Sophie',`Uploading further instructions to your panel now, message me when you have an NFT in your wallet`);
+        await new Promise(r => setTimeout(r, 500));
+        addInstructions(`Let's start by getting metamask setup. Download it here if you haven't got it already and set up a new wallet: <a href="https://metamask.io" target="_blank" />https://metamask.io</a> If you already have metamask it is still worth setting up a new wallet from the one you use for your main funds`);
+        await new Promise(r => setTimeout(r, 500));
+        addInstructions(`Change the network at the top of metamask to "Goerli Test Network". Testnets are a playground for developers and hackers alike!<br><img src="img/level1-metamask.jpg" style="border: 3px solid #222;" />`);
+        await new Promise(r => setTimeout(r, 500));
+        addInstructions(`Go ahead and connect your wallet to the WarDesk platform, click connect in the top right corner of this page and confirm in Metamask.`);
+        await new Promise(r => setTimeout(r, 500));
+        addInstructions(`Next get some Goerli testnet Ether to work with, there's a faucet here which should work <a href="https://goerli-faucet.pk910.de/" target="_blank">https://goerli-faucet.pk910.de/</a> If not try Googling "Goerli faucet" and see what comes up. You'll need some free testnet ETH to execute transactions. Be careful what you sign on 3rd party sites, you did set up a separate wallet right?`);
+        await new Promise(r => setTimeout(r, 500));
+        addInstructions(`Now head over to Etherscan and check out that NFT contract: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">https://goerli.etherscan.io/address/${level.contract}#code</a> Note you can switch between code, read functions and write functions using these buttons on etherscan.<br><img src="img/level1-etherscan.png" style="max-width: 300px; border: 3px solid #222;" />`);
+        await new Promise(r => setTimeout(r, 500));
+        addInstructions(`In the "Write Contract" section there is an option to "🔴 Connect To Web3", this will connect your wallet to Etherscan. We can then fire off transactions such as the mint function which when we copy and paste our address from metamask into the "_to" field and click mint should send us an NFT. Unfortunately they've sold out already so you'll have to check the code and figure out a way to hack the contract. Send us a message in the chat window when you have an NFT, good luck.`);
+        await new Promise(r => setTimeout(r, 500));
+        document.getElementById('instructions').scrollTop = 0;
+        setTimeout(() => {
+          if (level.id !== 1) return false;
+          addComs('James',`I've found a function called increaseMaxSupply(), maybe we can call this from Etherscan before we mint to our wallet address?`);
+        }, 5 * 60000);
+        while (!level.complete) {
+          await waitForInput();
+          if(!userAddress) await connect();
+          level.abi = ["function balanceOf(address owner) view returns (uint balance)"];
+          level.interface = contract = new ethers.Contract(level.contract, level.abi, signer);
+          const checkBalance = await level.interface.balanceOf(userAddress);
+          level.complete = checkBalance.toNumber ();
+          console.log(level.complete, checkBalance);
+          if (!level.complete) {
+            addComs('James',`I'm not seeing the NFT in your wallet, use the balanceOf() function on Etherscan's "Read Functions" tab to check`);
+          } else {
+            addComs('James',`Great work! You have completed the first level and are set up to take on your next challenge`);
+            localStorage.setItem('s1e1', true);
+            await new Promise(r => setTimeout(r, 2000));
+            level = {};
+            menu();
+          }
+        }
+      }
+
+      const level2 = async () => {
+        alert('Coming Soon, Try Level 1');
+      }
+
+      const level3 = async () => {
+        alert('Coming Soon, Try Level 1');
+      }
+
+      const menu = async () => {
+        document.getElementById('menu').style.display = 'block';
+        for (let episode = 1; episode <= 3; episode++) {
+          if (localStorage.getItem(`s1e${episode}`)) {
+            document.getElementById(`s1e${episode}`).innerHTML = 'COMPLETE';
+          }
+        }
+        }
+
+      const init = async() => {
+        await new Promise(r => setTimeout(r, 500));
+        menu();
+      }
+      init();
+    </script>
+  </body>
+</html>
