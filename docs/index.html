@@ -235,16 +235,15 @@ contract Whale {
     }
 }</code></pre>`);
           await wait(1000);
-          addComs('James',`That's close but it's not quite right. Once you have it figured out deploy the contract to Goerli and run the function. Sophie will provide further instructions on that shortly.`);
+          addComs('James',`That's close but it's not quite right. Once you have it figured out deploy the contract to Goerli and run the function. Sophie will provide further instructions on that shortly. Type help in here if you need some assistance.`);
         }, 30000);
         setTimeout(async () => {
           if (level.id !== 2) return false;
           addComs('Sophie',`Let's go through how to compile and deploy a contract using Remix. You can copy and paste the example in the instructions to start with or use your own.`);
           await wait(1000);
           await addInstructions(`In Remix, on the left hand side tool bar, the 3rd item down is a little "S" shaped icon. Click that and it should take you to the compile page. Click the big blue button that says "Compile Whale.sol". Any errors in your contract will usually show up here.`);
-          await wait(1000);
-          await addInstructions(`Next tool bar icon down is an Ethereum shaped icon. Click that and it should take you to the deploy page.<ul><li>Change Environment to "Injected Web3"</li><li>Change Contract to "Whale - contracts/Whale.sol"</li><li>Click deploy and confirm the transaction in Metamask</li><li>At the bottom of that task bar there is a section for deployed contracts</li><li>Expand yours and you should have buttons for the contract functions</li></ul><br><img src="img/level2-contract.jpg" style="border: 3px solid #222; width: 300px;" />`);
           await wait(3000);
+          await addInstructions(`Next tool bar icon down is an Ethereum shaped icon. Click that and it should take you to the deploy page.<ul><li>Change Environment to "Injected Web3"</li><li>Change Contract to "Whale - contracts/Whale.sol"</li><li>Click deploy and confirm the transaction in Metamask</li><li>At the bottom of that task bar there is a section for deployed contracts</li><li>Expand yours and you should have buttons for the contract functions</li></ul><br><img src="img/level2-contract.jpg" style="border: 3px solid #222; width: 300px;" />`);
         }, 90000);
         while (!level.complete) {
           await waitForInput();
@@ -269,7 +268,7 @@ contract Whale {
           if (level.help < 2) addComs('James',`We need to modify the contract I sent you to use ownerOf(45) instead of the balanceOf() function.`);
           if (level.help < 3) addComs('James',`Don't forget we need to return an address from the function rather than a number/uint256.`);
           if (level.help < 4) addComs('Sophie',`You can probably find out more about using remix on YouTube if you are stuck`);
-          if (level.help >= 5) addComs('James',`There's an example contract here which should do it`);
+          if (level.help >= 5) addComs('James',`There's an example contract here which should do it <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol</a>`);
         }
         level.help += 1;
       }
@@ -327,12 +326,12 @@ contract Whale {
       }
 
       const init = async() => {
-        await wait(500);
-        await intro();
         document.getElementById('user-message').addEventListener('keyup', function(event) {
           event.preventDefault();
           if (event.keyCode === 13) userMessage();
         });
+        await wait(500);
+        await intro();
       }
       init();
     </script>
