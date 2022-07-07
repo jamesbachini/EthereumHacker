@@ -29,27 +29,44 @@
   <body>
     <div id="menu" style="display: none; position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: #000000AA;">
       <div style="position: fixed; left: 10%; right: 10%; top: 75px; bottom: 10%; border: 5px solid #222; background: #000; text-align: center;">
-        <h1><span style="color: #2878a3; font-weight: 300; font-size:1.2em; letter-spacing: .15rem;"><span style="font-size: 1.2em;">W</span>AR<span style="color: #8a1a86;"><span style="font-size: 1.2em;">D</span>ESK</span></span> Series 1</h1>
+        <h3><span style="color: #2878a3; font-weight: 300; font-size:1.2em; letter-spacing: .15rem;"><span style="font-size: 1.2em;">W</span>AR<span style="color: #8a1a86;"><span style="font-size: 1.2em;">D</span>ESK</span></span> Series 1</h3>
         <div style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%;">
-          <div style="flex: 1 1 auto; cursor:pointer; border: 3px solid #111; padding: 5px; margin: 10px 3%;" onclick="level1();">
-            <h2 style="color: #2878a3;">THE GALA NFT</h2>
-            <h3>Episode 1</h3>
-            <img src="img/level1-thumb.png?v3=5" style="opacity: 0.6;" />
+          <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level1-thumb.png?v=4); background-size: cover;" onclick="level1();">
+            <h2 style="margin: 15px 0px; color: #2878a3;">THE GALA NFT</h2>
+            <h3 style="margin: 0px;">Episode 1 - Easy</h3>
             <p style="color: #888;">Help get our agent into the Gala NFT Party by hacking a NFT contract</p>
             <p id="s1e1" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
           </div>
-          <div style="flex: 1 1 auto; cursor:pointer; border: 3px solid #111; padding: 5px; margin: 10px 3%;" onclick="level2();">
-            <h2 style="color: #2878a3;">FIND THE WHALE</h2>
-            <h3>Episode 2</h3>
-            <img src="img/level2-thumb.png" style="opacity: 0.6;" />
+          <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level2-thumb.png?v=4); background-size: cover;" onclick="level2();">
+            <h2 style="margin: 15px 0px; color: #2878a3;">FIND THE WHALE</h2>
+            <h3 style="margin: 0px;">Episode 2 - Easy</h3>
             <p style="color: #888;">There is a large token holder at the party, let's uncover who they are</p>
             <p id="s1e2" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
           </div>
-          <div style="flex: 1 1 auto; cursor:pointer; border: 3px solid #111; padding: 5px; margin: 10px 3%;" onclick="level3();">
-            <h2 style="color: #2878a3;">BREAK THE MULTISIG</h2>
-            <h3>Episode 3</h3>
-            <img src="img/level3-thumb.png" style="opacity: 0.6;" />
+          <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level3-thumb.png?v=4); background-size: cover;" onclick="level3();">
+            <h2 style="margin: 15px 0px; color: #2878a3;">HACK THE ORACLE</h2>
+            <h3 style="margin: 0px;">Episode 3 - Medium</h3>
+            <p style="color: #888;">This contract isn't as permissionless as one would hope</p>
+            <p id="s1e3" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%;">
+          <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level4-thumb.png?v=4); background-size: cover;" onclick="level1();">
+            <h2 style="margin: 15px 0px; color: #2878a3;">MARKET MANIPULATION</h2>
+            <h3 style="margin: 0px;">Episode 4 - Medium</h3>
+            <p style="color: #888;">Prevent price fixing in the central bank digital currency</p>
+            <p id="s1e1" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
+          </div>
+          <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level5-thumb.png?v=4); background-size: cover;" onclick="level3();">
+            <h2 style="margin: 15px 0px; color: #2878a3;">BREAK THE MULTISIG</h2>
+            <h3 style="margin: 0px;">Episode 5 - Hard</h3>
             <p style="color: #888;">Break a multisignature wallets safety function to gain access to the funds</p>
+            <p id="s1e3" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
+          </div>
+          <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level6-thumb.png?v=4); background-size: cover;" onclick="level3();">
+            <h2 style="margin: 15px 0px; color: #2878a3;">GRADUATION</h2>
+            <h3 style="margin: 0px;">Episode 6 - Hard</h3>
+            <p style="color: #888;">Finish up by adding your name to the leaderboard</p>
             <p id="s1e3" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
           </div>
         </div>
@@ -58,7 +75,7 @@
 
     <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%;">
       <div style="flex: 1 1 auto; text-align: left; font-size: 1.4em; font-weight: bold;">
-        <img src="img/logo.svg" style="height:60px; margin-bottom: -20px; margin-left: 10px;" />
+        <img src="img/logo.svg?v2=3" style="height:60px; margin-bottom: -20px; margin-left: 10px;" />
         <span style="color: #2878a3; font-weight: 300; font-size:1.2em; letter-spacing: .15rem;"><span style="font-size: 1.2em;">W</span>AR<span style="color: #8a1a86;"><span style="font-size: 1.2em;">D</span>ESK</span></span><span style="color: #777; font-size: 0.8em; margin-left: -3px;">.eth</span>
         <div style="font-size: 0.555em; margin-left: 83px; color: #555;">BLACK OPS ETHEREUM GAME</div>
       </div>
@@ -114,13 +131,13 @@
       let level = {};
 
       const addInstructions = async (html) => {
-        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: top;"><div style="font-weight: bold; color: #0F0;">&gt;</div><div style="padding-left: 10px; color: #0F0;">${html}</div></div><hr style="width: 100%; margin: 20px 0px; color: #111;">`;
+        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: top;"><div style="font-weight: bold; color: #2878a3;">&gt;</div><div style="padding-left: 10px; color: #0F0;">${html}</div></div><hr style="width: 100%; margin: 20px 0px; color: #111;">`;
         document.getElementById('instructions').innerHTML += formattedHTML;
         document.getElementById('instructions').scrollTop = document.getElementById('instructions').scrollHeight;
       }
 
       const addComs = async (who,html) => {
-        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;"><div><img src="img/${who.toLowerCase()}.png" alt="${who}" style="height: 80px; min-width: 80px;" /></div><div style="padding-left: 20px;"><div style="color:#2878a3; font-weight:bold;">${who}</div><div>${html}</div></div></div>`;
+        const formattedHTML = `<div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;"><div><img src="img/${who.toLowerCase()}.png" alt="${who}" style="height: 80px; min-width: 80px; border: 2px solid #2878a3; border-radius: 99px;" /></div><div style="padding-left: 20px;"><div style="color:#2878a3; font-weight:bold;">${who}</div><div>${html}</div></div></div>`;
         document.getElementById('coms').innerHTML += formattedHTML;
         document.getElementById('coms').scrollTop = document.getElementById('coms').scrollHeight;
       }
@@ -151,8 +168,9 @@
       }
 
       const level1 = async () => {
+        // The Gala NFT
         await startNewLevel(1);
-        level.contract = `0x484Ec30Feff505b545Ed7b905bc25a6a40589181`;
+        level.contract = `0x484Ec30Feff505b545Ed7b905bc25a6a40589181`; // GalaNFT.sol
         await wait(2000);
         addComs('James',`We have a code red and need your help`);
         await wait(4000);
@@ -185,24 +203,24 @@
           await waitForInput();
           if(!userAddress) await connect();
           level.abi = ["function balanceOf(address owner) view returns (uint balance)"];
-          level.interface = contract = new ethers.Contract(level.contract, level.abi, signer);
+          level.interface = new ethers.Contract(level.contract, level.abi, signer);
           const checkBalance = await level.interface.balanceOf(userAddress);
-          level.complete = checkBalance.toNumber ();
-          console.log(level.complete, checkBalance);
-          if (!level.complete) {
-            addComs('James',`I'm not seeing the NFT in your wallet, use the balanceOf() function on Etherscan's "Read Functions" tab to check`);
-          } else {
+          level.complete = checkBalance.toNumber();
+          if (level.complete) {
             addComs('James',`Great work! You have completed the first level and are set up to take on your next challenge`);
             localStorage.setItem('s1e1', true);
-            await wait(2000);
+            await wait(5000);
             menu();
+          } else {
+            addComs('Sophie',`I'm not seeing the NFT in your wallet, use the balanceOf() function on Etherscan's "Read Functions" tab to check`);
           }
         }
       }
 
       const level2 = async () => {
+        // Find The Whale
         await startNewLevel(2);
-        level.contract = `0x484Ec30Feff505b545Ed7b905bc25a6a40589181`;
+        level.contract = `0x484Ec30Feff505b545Ed7b905bc25a6a40589181`; // GalaNFT.sol
         await wait(1000);
         addComs('Cathy',`Good work on the NFT, I'm in! Now we need to find out who is behind this`);
         await wait(2000);
@@ -224,7 +242,9 @@
           if (level.id !== 2) return false;
           addComs('James',`We should probably import the Openzeppelin interface to connect to the contract. I'll put an example of what I'm thinking in the terminal:`);
           await wait(1000);
-          await addInstructions(`<pre><code>// SPDX-License-Identifier: GPL-3.0
+          await addInstructions(`
+<pre><code>
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
@@ -233,15 +253,16 @@ contract Whale {
     function checkBalance() public view returns (uint256) {
         return IERC721(${level.contract}).balanceOf(msg.sender);
     }
-}</code></pre>`);
+}
+</code></pre>`);
           await wait(1000);
-          addComs('James',`That's close but it's not quite right. Once you have it figured out deploy the contract to Goerli and run the function. Sophie will provide further instructions on that shortly. Type help in here if you need some assistance.`);
+          addComs('James',`That's close but it's not quite right. Once you have it figured out deploy the contract to Goerli and run the function. Sophie will provide further instructions on that shortly. Type help in here if you need some assistance`);
         }, 30000);
         setTimeout(async () => {
           if (level.id !== 2) return false;
-          addComs('Sophie',`Let's go through how to compile and deploy a contract using Remix. You can copy and paste the example in the instructions to start with or use your own.`);
+          addComs('Sophie',`Let's go through how to compile and deploy a contract using Remix. You can copy and paste the example in the instructions to start with or use your own`);
           await wait(1000);
-          await addInstructions(`In Remix, on the left hand side tool bar, the 3rd item down is a little "S" shaped icon. Click that and it should take you to the compile page. Click the big blue button that says "Compile Whale.sol". Any errors in your contract will usually show up here.`);
+          await addInstructions(`In Remix, on the left hand side tool bar, the 3rd item down is a little "S" shaped icon. Click that and it should take you to the compile page. Click the big blue button that says "Compile Whale.sol". Any errors in your contract will usually show up here`);
           await wait(3000);
           await addInstructions(`Next tool bar icon down is an Ethereum shaped icon. Click that and it should take you to the deploy page.<ul><li>Change Environment to "Injected Web3"</li><li>Change Contract to "Whale - contracts/Whale.sol"</li><li>Click deploy and confirm the transaction in Metamask</li><li>At the bottom of that task bar there is a section for deployed contracts</li><li>Expand yours and you should have buttons for the contract functions</li></ul><br><img src="img/level2-contract.jpg" style="border: 3px solid #222; width: 300px;" />`);
         }, 90000);
@@ -251,24 +272,221 @@ contract Whale {
           if (level.complete) {
             addComs('James',`Got him. Great work! Let's Go`);
             localStorage.setItem('s1e2', true);
-            await wait(2000);
+            await wait(5000);
             menu();
           }
         }
       }
 
       const level3 = async () => {
-        alert('Coming Soon, Try Level 1');
+        // Hack The Oracle
+        await startNewLevel(3);
+        level.contract = `0x094251c982cb00B1b1E1707D61553E304289D4D8`; // CBDC.sol
+        await wait(1000);
+        addComs('Sophie',`There is an ERC20 token in the whales wallet which I think might be the central bank digital currency. It's at token address: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
+        await wait(3000);
+        addComs('Cathy',`We can't let them launch a CBDC. Is it possible to break it?`);
+        await wait(4000);
+        addComs('James',`Looking at the code there are oracles that have special privileges. If we can get your address whitelisted as an oracle then we might be able to do something`);
+        await wait(3000);
+        addComs('Sophie',`There is a function addOracle() but it's secured by a secret hash. We will need the right code word or phrase to do this`);
+        await wait(4000);
+        addComs('Cathy',`The profile suggests they are likely to use a single word that is all lowercase. Let us know when you've done it. Good luck!`);
+        await addInstructions(`Search the code for any clues about what the secret word is`);
+        await wait(500);
+        await addInstructions(`Execute the addOracle() function with the secret word to add your address to the oracles`);
+        await wait(500);
+        await addInstructions(`Type help in chat if you need the team`);
+        await wait(500);
+        
+        while (!level.complete) {
+          await waitForInput();
+          level.abi = ["function isOracle(address _checkAddress) public view returns (bool)"];
+          level.interface = new ethers.Contract(level.contract, level.abi, signer);
+          level.complete = await level.interface.isOracle(userAddress);
+          console.log(level.complete);
+          if (level.complete) {
+            addComs('James',`That's it you have oracle privileges. Amazing. Well done!`);
+            localStorage.setItem('s1e3', true);
+            await wait(5000);
+            menu();
+          } else {
+            addComs('Sophie',`Your wallet isn't currently registered as an oracle`);
+            
+          }
+        }
+      }
+
+      const level4 = async () => {
+        // Stop Market Manipulation
+        await startNewLevel(4);
+        level.contract = `0x094251c982cb00B1b1E1707D61553E304289D4D8`; // CBDC.sol
+        level.priceTarget = Math.round(Math.random() * 100);
+        await wait(1000);
+        addComs('James',`They are manipulating markets by setting a USD price within the smart contract. We need to reduce the USD price`);
+        await wait(3000);
+        addComs('Cathy',`Market intelligence suggest a price target of $${level.priceTarget} would be ideal to counteract them`);
+        await wait(4000);
+        addComs('James',`Let's have a look at that token contract again: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
+        await wait(3000);
+        addComs('Sophie',`There is a updatePrice() function but you'll need to write a smart contract to break this one`);
+        await wait(4000);
+        addComs('Cathy',`Make sure you set the price to ${level.priceTarget} and then let us know here when it's done. As always just ask for help in chat if you need it`);
+        await addInstructions(`Check out the contract code and updatePrice() function at <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
+        await wait(500);
+        await addInstructions(`Head over to Remix and create a new contract <a href="https://remix.ethereum.org" target="_blank">https://remix.ethereum.org</a>`);
+        await wait(500);
+        await addInstructions(`There's two stages to this. We will need to add our contract address to the list of oracles using the secret word from the last challenge. Then we need to crack the block hash which we will need to do programmatically because it changes every 13 seconds`);
+        await wait(500);
+        await addInstructions(`Here's an interface we can use to interact with the CBDC token contract
+<pre><code>
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.0;
+
+interface CBDC {
+  function addOracle(string calldata _secret) external;
+  function updatePrice(bytes32 _blockHash, uint256 _usdPrice) external;
+}
+
+contract PriceUpdater {
+    address cbdc = 0x094251c982cb00B1b1E1707D61553E304289D4D8;
+    function updatePrice(string calldata _secret) public {    
+        CBDC(cbdc).addOracle(_secret);
+    }
+}
+</code></pre>`);
+        await wait(500);
+        while (!level.complete) {
+          await waitForInput();
+          level.abi = ["function usdPrice() public view returns (uint256)"];
+          level.interface = new ethers.Contract(level.contract, level.abi, signer);
+          const usdPrice = await level.interface.usdPrice(userAddress);
+          if (usdPrice.toNumber() == level.priceTarget) level.complete = true;
+          if (level.complete) {
+            addComs('James',`Price target is hit! Our market makers can do the rest 👍`);
+            localStorage.setItem('s1e4', true);
+            await wait(5000);
+            menu();
+          } else {
+            addComs('Sophie',`usdPrice is currently $${usdPrice.toNumber()} we need you to set it to $${level.priceTarget}`);
+          }
+        }
+      }
+
+      const level5 = async () => {
+        // Break The Multisig
+        await startNewLevel(5);
+        level.contract = `0x550714e1Fd747084Fc5cB2B2e3a93512972aeBdA`; // MultiSig.sol
+        level.tokenContract = `0x094251c982cb00B1b1E1707D61553E304289D4D8`; // CBDC.sol
+        level.priceTarget = Math.round(Math.random() * 100);
+        await wait(1000);
+        addComs('Cathy',`We have a problem. The vast majority of the CBDC funds are held in a multisig wallet which I can't access.`);
+        await wait(3000);
+        addComs('Sophie',`I see the multisig here: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
+        await wait(4000);
+        addComs('James',`OK we need a way to access those tokens. Can you hack it and show that you have some of those CBDC's in your wallet?`);
+        await wait(3000);
+        addComs('Sophie',`You'll need the CDBC contract address too I expect: <a href="https://goerli.etherscan.io/address/${level.tokenContract}#code" target="_blank">${level.tokenContract}</a>`);
+        await wait(500);
+        await addInstructions(`You are going to need to use Remix for this and deploy a contract to exploit the MultiSig contract <a href="https://remix.ethereum.org" target="_blank">https://remix.ethereum.org</a>`);
+        await addInstructions(`Setup interfaces to interact with the functions you need on the external contracts`);
+        await wait(500);
+        await addInstructions(`Deploy your attacker contract and execute it to take some CDBC tokens`);
+        await wait(500);
+        await addInstructions(`Put a message in chat when you have some CBDC tokens in your wallet or type help if you need assistance`);
+        while (!level.complete) {
+          await waitForInput();
+          level.abi = ["function balanceOf(address account) public view returns (uint256)"];
+          level.interface = new ethers.Contract(level.tokenContract, level.abi, signer);
+          const balance = await level.interface.balanceOf(userAddress);
+          if (balance.toNumber() > 0) level.complete = true;
+          if (level.complete) {
+            addComs('James',`You found a way to break that contract, well done! Sophie can automate it from here to drain it 👍`);
+            localStorage.setItem('s1e5', true);
+            await wait(5000);
+            menu();
+          } else {
+            addComs('Sophie',`Your CBDC balance is currently ${balance.toNumber()} we need some of those tokens`);
+          }
+        }
+      }
+
+      const level6 = async () => {
+        // Leaderboard
+        await startNewLevel(5);
+        level.contract = `0x8ef50fadf9Bd73E44Fc6839D40854F57F0C46Fc9`; // Leaderboard.sol
+        level.priceTarget = Math.round(Math.random() * 100);
+        await wait(1000);
+        addComs('Cathy',`It's time for you to graduate from the WarDesk, let's wrap this up with one final challenge.`);
+        await wait(3000);
+        addComs('Sophie',`There is a leaderboard contract: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
+        await wait(4000);
+        addComs('James',`You'll need to decode a secret pharse and add your name or handle to the leaderboard.`);
+        await wait(3000);
+        await addInstructions(`You can probably use <a href="https://remix.ethereum.org" target="_blank">Remix</a> or <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">Etherscan</a> for this.`);
+        await wait(500);
+        await addInstructions(`Ensure you've completed the previous challenges first. Then solve the secret phrase in the smart contract at: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
+        await wait(500);
+        await addInstructions(`You will need some of that CBDC in your wallet and also make sure _yourName is less than 32 characters`);
+        
+        await wait(500);
+        await addInstructions(`Send us a message when you have your name in the leaderboard`);
+        while (!level.complete) {
+          await waitForInput();
+          level.abi = ["function position(address) public view returns (uint256)"];
+          level.interface = new ethers.Contract(level.contract, level.abi, signer);
+          const position = await level.interface.position(userAddress);
+          if (position.toNumber() > 0) level.complete = true;
+          if (level.complete) {
+            addComs('James',`Congratulations you are the ${position.toNumber()} person to complete this challenge.`);
+            await wait(2000);
+            addComs('Cathy',`Your name will forever live in the blockchain`);
+            localStorage.setItem('s1e6', true);
+            await wait(5000);
+            menu();
+          } else {
+            addComs('Sophie',`You aren't showing on the leaderboard yet`);
+          }
+        }
+
       }
 
       const help = async () => {
         if (!level.help) level.help = 0;
         if (level.id == 2) {
-          if (level.help < 1) addComs('Sophie',`There is an ownerOf() function in that contract which looks interesting...`);
-          if (level.help < 2) addComs('James',`We need to modify the contract I sent you to use ownerOf(45) instead of the balanceOf() function.`);
-          if (level.help < 3) addComs('James',`Don't forget we need to return an address from the function rather than a number/uint256.`);
-          if (level.help < 4) addComs('Sophie',`You can probably find out more about using remix on YouTube if you are stuck`);
-          if (level.help >= 5) addComs('James',`There's an example contract here which should do it <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol</a>`);
+          if (level.help == 0) addComs('Sophie',`There is an ownerOf() function in that contract which looks interesting...`);
+          if (level.help == 1) addComs('James',`We need to modify the contract I sent you to use ownerOf(45) instead of the balanceOf() function.`);
+          if (level.help == 2) addComs('James',`Don't forget we need to return an address from the function rather than a number/uint256.`);
+          if (level.help == 3) addComs('Sophie',`You can probably find out more about using remix on YouTube if you are stuck`);
+          if (level.help > 3) addComs('James',`There's an example contract here which should do it <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol</a>`);
+        }
+        if (level.id == 3) {
+          if (level.help == 0) addComs('Sophie',`There's a comment in the code linking to this twitter profile <a href="https://twitter.com/CentralBankDigi" target="_blank">https://twitter.com/CentralBankDigi</a>`);
+          if (level.help == 1) addComs('James',`It might be easier to try different answers using the testAnswer() function.`);
+          if (level.help == 2) addComs('James',`What has branches but no leaves... Must be something related, financial maybe`);
+          if (level.help == 3) addComs('Cathy',`High street shops and banks have branches`);
+          if (level.help > 3) addComs('James',`Try the addOracle function with the string bank`);
+        }
+        if (level.id == 4) {
+          if (level.help == 1) addComs('James',`Deploy your attacker contract to Goreli and run it from there to update the usdPrice value.`);
+          if (level.help == 0) addComs('Sophie',`Maybe we can copy some of the code from the CBDC.sol contract into ours to crack the blockhash`);
+          if (level.help == 2) addComs('James',`Your contract will need to execute the addOracle(_secret) first, then the updatePrice(_blockHash, _newPrice) functions`);
+          if (level.help == 3) addComs('Cathy',`You'll need to calculate that blockhash in real time to update the price`);
+          if (level.help > 3) addComs('James',`There's a contract I've put together here: <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/PriceUpdater.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/PriceUpdater.sol</a> try that.`);
+        }
+        if (level.id == 5) {
+          if (level.help == 1) addComs('James',`Start by reading through the contract and trying to find an attack vector, perhaps something non-obvious.`);
+          if (level.help == 0) addComs('Sophie',`If we could control the USDC token address we could use buyFundsPublic() to get some funds.`);
+          if (level.help == 2) addComs('James',`You would need to deploy your own ERC20 token, mint yourself a load of it and then replace the USDC contract address with yours.`);
+          if (level.help == 3) addComs('Cathy',`Don't forget you need to execute _approve(address(this),multisig,amount) on your own ERC20 to allow the multisig contract to move tokens when calling transferFrom()`);
+          if (level.help > 3) addComs('James',`Take a look at this code for inspiration: <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/MyERC20.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/MyERC20.sol</a> try that.`);
+        }
+        if (level.id == 5) {
+          if (level.help == 1) addComs('James',`The code is written in hexadecimal format, perhaps we can convert it to a text string.`);
+          if (level.help == 0) addComs('Sophie',`There is another function at the bottom of the contract which might help.`);
+          if (level.help == 2) addComs('James',`Or maybe just use an online binary > text converter`);
+          if (level.help == 3) addComs('Sophie',`The leaderboard code is also here: <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/Leaderboard.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/Leaderboard.sol</a>`);
+          if (level.help > 3) addComs('James',`"congratulations" on needing this much help`);
         }
         level.help += 1;
       }
