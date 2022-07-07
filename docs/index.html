@@ -30,7 +30,7 @@
     <div id="menu" style="display: none; position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: #000000AA;">
       <div style="position: fixed; left: 10%; right: 10%; top: 75px; bottom: 10%; border: 5px solid #222; background: #000; text-align: center;">
         <h3><span style="color: #2878a3; font-weight: 300; font-size:1.2em; letter-spacing: .15rem;"><span style="font-size: 1.2em;">W</span>AR<span style="color: #8a1a86;"><span style="font-size: 1.2em;">D</span>ESK</span></span> Series 1</h3>
-        <div style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%; height: 40%;">
           <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level1-thumb.png?v=4); background-size: cover;" onclick="level1();">
             <h2 style="margin: 15px 0px; color: #2878a3;">THE GALA NFT</h2>
             <h3 style="margin: 0px;">Episode 1 - Easy</h3>
@@ -50,7 +50,7 @@
             <p id="s1e3" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
           </div>
         </div>
-        <div style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%; height: 40%;">
           <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level4-thumb.png?v=4); background-size: cover;" onclick="level1();">
             <h2 style="margin: 15px 0px; color: #2878a3;">MARKET MANIPULATION</h2>
             <h3 style="margin: 0px;">Episode 4 - Medium</h3>
@@ -65,11 +65,12 @@
           </div>
           <div style="flex: 1 1 0; cursor:pointer; border: 3px solid #111; padding: 3px; margin: 5px; background-image: url(img/level6-thumb.png?v=4); background-size: cover;" onclick="level3();">
             <h2 style="margin: 15px 0px; color: #2878a3;">GRADUATION</h2>
-            <h3 style="margin: 0px;">Episode 6 - Hard</h3>
+            <h3 style="margin: 0px;">Episode 6 - Medium</h3>
             <p style="color: #888;">Finish up by adding your name to the leaderboard</p>
             <p id="s1e3" style="margin-top: 10px; color: #8a1a86; font-size: 1.4em;">&nbsp;</p>
           </div>
         </div>
+        <div style="position: absolute; bottom: 10px; width:100%; text-align: center; color: #8a1a86; cursor: pointer;" onclick="leaderBoard();">Leaderboard</div>
       </div>
     </div>
 
@@ -107,6 +108,16 @@
     </div>
 
     <div id="mobile-message" style="position: fixed; left: 0; right: 0; top: 75px; bottom: 0; display: none; background: #000000EE; padding: 5%;">Unfortunately it is not currently possible to play on a mobile device.<br><br>You will need to use remix, metamask and etherscan to complete the challenges so log in to a laptop and join your team</div>
+
+    <div id="leaderboard" style="position: fixed; left: 0; right: 0; top: 75px; bottom: 0; display: none; background: #000000EE; padding: 5%;">
+      <div style="width: 100%; text-align: center; margin: 5px;">
+        <button onclick="document.getElementById('leaderboard').style.display = 'none';">CLOSE</button>
+      </div>
+      <div id="leaderboard-content" style="display: flex; flex-direction: row; align-items: top; justify-content: center; width: 100%; height: 90%;">
+       <div id="leaders-first" style="flex: 1 1 0; background: #000000AA; height: 100%; border: 5px solid #222; margin: 1%; padding: 1%; overflow: hidden;">Loading...</div>
+       <div id="leaders-latest" style="flex: 1 1 0; background: #000000AA; height: 100%; border: 5px solid #222; margin: 1%; padding: 1%; overflow: hidden;">Loading...</div>
+      </div>
+    </div>
 
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
     <script>
@@ -448,7 +459,40 @@ contract PriceUpdater {
             addComs('Sophie',`You aren't showing on the leaderboard yet`);
           }
         }
+      }
 
+      const leaderBoard = async () => {
+        if(!userAddress) await connect();
+        document.getElementById('leaderboard').style.display = 'block';
+        const contract = `0x8ef50fadf9Bd73E44Fc6839D40854F57F0C46Fc9`; // Leaderboard.sol
+        const abi = ["function leaderboard(uint256) public view returns (string)","function leaderboardLength() public view returns (uint256)"];
+        const interface = new ethers.Contract(contract, abi, signer);
+        let first = `<h2>FIRST</h2><ul>`;
+        for (let i = 0; i < 5; i++) {
+          try {
+            const name = await interface.leaderboard(i);
+            const cleanName = name.split(/[^a-zA-Z0-9_@\.]/).join('');
+            first += `<li>${cleanName}</li>`;
+          } catch (e) {
+            console.log(e);
+          }    
+        }
+        first += `</ul>`;
+        document.getElementById('leaders-first').innerHTML = first;
+        const latestRes = await interface.leaderboardLength();
+        const noOfPlayers = latestRes.toNumber();
+        let latest = `<h2>LATEST</h2><ul>`;
+        for (let i = noOfPlayers; i > noOfPlayers-5; i--) {
+          try {
+            const name = await interface.leaderboard(i);
+            const cleanName = name.split(/[^a-zA-Z0-9_@\.]/).join('');
+            latest += `<li>${cleanName}</li>`;
+          } catch (e) {
+            console.log(e);
+          }    
+        }
+        latest += `</ul>`;
+        document.getElementById('leaders-latest').innerHTML = latest;
       }
 
       const help = async () => {
