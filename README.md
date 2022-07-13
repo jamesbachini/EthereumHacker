@@ -1,7 +1,7 @@
-# WarDesk
+# EthereumHacker
 ## Black Ops Ethereum Game
 
-Play here: https://jamesbachini.github.io/WarDesk/
+Play here: https://ethereumhacker.com
 
 This is a Web3 based game inspired by other projects like:
 
