@@ -78,7 +78,7 @@
       <div style="flex: 1 1 auto; text-align: left; font-size: 1.4em; font-weight: bold;">
         <img src="img/logo.svg?v2=3" style="height:60px; margin-bottom: -20px; margin-left: 10px;" />
         <span style="color: #2878a3; font-weight: 300; font-size:1.2em; letter-spacing: .15rem;"><span style="font-size: 1.2em;">E</span>THEREUM<span style="color: #8a1a86;"><span style="font-size: 1.2em;">H</span>ACKER</span></span>
-        <div style="font-size: 0.555em; margin-left: 83px; color: #555;">BLACK OPS ETHEREUM GAME</div>
+        <div style="font-size: 0.82em; margin-left: 83px; color: #555;">BLACK OPS ETHEREUM GAME</div>
       </div>
       <div style="flex: 1 1 auto; text-align: right; padding: 1%;">
         <span style="font-size:0.6em; color: #333;" class="wallet-address"></span>
@@ -197,7 +197,7 @@
         await wait(500);
         await addInstructions(`Change the network at the top of metamask to "Goerli Test Network". Testnets are a playground for developers and hackers alike!<br><img src="img/level1-metamask.jpg" style="border: 3px solid #222;" />`);
         await wait(500);
-        await addInstructions(`Go ahead and connect your wallet to the WarDesk platform, click connect in the top right corner of this page and confirm in Metamask.`);
+        await addInstructions(`Go ahead and connect your wallet to the EthereumHacker.com platform, click connect in the top right corner of this page and confirm in Metamask.`);
         await wait(500);
         await addInstructions(`Next get some Goerli testnet Ether to work with, there's a faucet here which should work <a href="https://goerli-faucet.pk910.de/" target="_blank">https://goerli-faucet.pk910.de/</a> If not try Googling "Goerli faucet" and see what comes up. You'll need some free testnet ETH to execute transactions. Be careful what you sign on 3rd party sites, you did set up a separate wallet right?`);
         await wait(500);
@@ -428,7 +428,7 @@ contract PriceUpdater {
         level.contract = `0x8ef50fadf9Bd73E44Fc6839D40854F57F0C46Fc9`; // Leaderboard.sol
         level.priceTarget = Math.round(Math.random() * 100);
         await wait(1000);
-        addComs('Cathy',`It's time for you to graduate from the WarDesk, let's wrap this up with one final challenge.`);
+        addComs('Cathy',`It's time for you to graduate as a certified Ethereum Hacker, let's wrap this up with one final challenge.`);
         await wait(3000);
         addComs('Sophie',`There is a leaderboard contract: <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
         await wait(4000);
@@ -502,7 +502,7 @@ contract PriceUpdater {
           if (level.help == 1) addComs('James',`We need to modify the contract I sent you to use ownerOf(45) instead of the balanceOf() function.`);
           if (level.help == 2) addComs('James',`Don't forget we need to return an address from the function rather than a number/uint256.`);
           if (level.help == 3) addComs('Sophie',`You can probably find out more about using remix on YouTube if you are stuck`);
-          if (level.help > 3) addComs('James',`There's an example contract here which should do it <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/Whale.sol</a>`);
+          if (level.help > 3) addComs('James',`There's an example contract here which should do it <a href="https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/Whale.sol" target="_blank">https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/Whale.sol</a>`);
         }
         if (level.id == 3) {
           if (level.help == 0) addComs('Sophie',`There's a comment in the code linking to this twitter profile <a href="https://twitter.com/CentralBankDigi" target="_blank">https://twitter.com/CentralBankDigi</a>`);
@@ -516,20 +516,20 @@ contract PriceUpdater {
           if (level.help == 0) addComs('Sophie',`Maybe we can copy some of the code from the CBDC.sol contract into ours to crack the blockhash`);
           if (level.help == 2) addComs('James',`Your contract will need to execute the addOracle(_secret) first, then the updatePrice(_blockHash, _newPrice) functions`);
           if (level.help == 3) addComs('Cathy',`You'll need to calculate that blockhash in real time to update the price`);
-          if (level.help > 3) addComs('James',`There's a contract I've put together here: <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/PriceUpdater.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/PriceUpdater.sol</a> try that.`);
+          if (level.help > 3) addComs('James',`There's a contract I've put together here: <a href="https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/PriceUpdater.sol" target="_blank">https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/PriceUpdater.sol</a> try that.`);
         }
         if (level.id == 5) {
           if (level.help == 1) addComs('James',`Start by reading through the contract and trying to find an attack vector, perhaps something non-obvious.`);
           if (level.help == 0) addComs('Sophie',`If we could control the USDC token address we could use buyFundsPublic() to get some funds.`);
           if (level.help == 2) addComs('James',`You would need to deploy your own ERC20 token, mint yourself a load of it and then replace the USDC contract address with yours.`);
           if (level.help == 3) addComs('Cathy',`Don't forget you need to execute _approve(address(this),multisig,amount) on your own ERC20 to allow the multisig contract to move tokens when calling transferFrom()`);
-          if (level.help > 3) addComs('James',`Take a look at this code for inspiration: <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/MyERC20.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/MyERC20.sol</a> try that.`);
+          if (level.help > 3) addComs('James',`Take a look at this code for inspiration: <a href="https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/MyERC20.sol" target="_blank">https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/MyERC20.sol</a> try that.`);
         }
         if (level.id == 5) {
           if (level.help == 1) addComs('James',`The code is written in hexadecimal format, perhaps we can convert it to a text string.`);
           if (level.help == 0) addComs('Sophie',`There is another function at the bottom of the contract which might help.`);
           if (level.help == 2) addComs('James',`Or maybe just use an online binary > text converter`);
-          if (level.help == 3) addComs('Sophie',`The leaderboard code is also here: <a href="https://github.com/jamesbachini/WarDesk/blob/main/contracts/Leaderboard.sol" target="_blank">https://github.com/jamesbachini/WarDesk/blob/main/contracts/Leaderboard.sol</a>`);
+          if (level.help == 3) addComs('Sophie',`The leaderboard code is also here: <a href="https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/Leaderboard.sol" target="_blank">https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/Leaderboard.sol</a>`);
           if (level.help > 3) addComs('James',`"congratulations" on needing this much help`);
         }
         level.help += 1;
@@ -564,7 +564,7 @@ contract PriceUpdater {
         await type('intro-text','The year is 2032 and a major super power is threatening to launch a central bank digital currency');
         await type('intro-text','This will threaten our global reserve status, the worlds economy and democracy as we know it');
         await type('intro-text','A special team of black ops ethereum hackers has been put together to prevent this happening');
-        await type('intro-text','Use your Web3 skills to help the war desk prevent an economic and social collapse of society');
+        await type('intro-text','Use your Web3 skills to help the elite team prevent an economic and social collapse of society');
         await wait(5000);
         document.getElementById('intro').style.display = 'none';
         menu();
