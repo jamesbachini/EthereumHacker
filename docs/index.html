@@ -538,7 +538,7 @@ contract PriceUpdater {
 
       const menu = async () => {
         document.getElementById('menu').style.display = 'block';
-        for (let episode = 1; episode <= 3; episode++) {
+        for (let episode = 1; episode <= 6; episode++) {
           if (localStorage.getItem(`s1e${episode}`)) {
             document.getElementById(`s1e${episode}`).innerHTML = 'COMPLETE';
           }
