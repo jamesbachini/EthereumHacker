@@ -370,7 +370,7 @@ contract PriceUpdater {
           await waitForInput();
           level.abi = ["function usdPrice() public view returns (uint256)"];
           level.interface = new ethers.Contract(level.contract, level.abi, signer);
-          const usdPrice = await level.interface.usdPrice(userAddress);
+          const usdPrice = await level.interface.usdPrice();
           if (usdPrice.toNumber() == level.priceTarget) level.complete = true;
           if (level.complete) {
             addComs('James',`Price target is hit! Our market makers can do the rest 👍`);
@@ -388,7 +388,6 @@ contract PriceUpdater {
         await startNewLevel(5);
         level.contract = `0x550714e1Fd747084Fc5cB2B2e3a93512972aeBdA`; // MultiSig.sol
         level.tokenContract = `0x094251c982cb00B1b1E1707D61553E304289D4D8`; // CBDC.sol
-        level.priceTarget = Math.round(Math.random() * 100);
         await wait(1000);
         addComs('Cathy',`We have a problem. The vast majority of the CBDC funds are held in a multisig wallet which I can't access.`);
         await wait(3000);
@@ -425,7 +424,6 @@ contract PriceUpdater {
         // Leaderboard
         await startNewLevel(5);
         level.contract = `0x8ef50fadf9Bd73E44Fc6839D40854F57F0C46Fc9`; // Leaderboard.sol
-        level.priceTarget = Math.round(Math.random() * 100);
         await wait(1000);
         addComs('Cathy',`It's time for you to graduate as a certified Ethereum Hacker, let's wrap this up with one final challenge.`);
         await wait(3000);
