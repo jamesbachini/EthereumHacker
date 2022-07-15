@@ -311,6 +311,7 @@ contract Whale {
         
         while (!level.complete) {
           await waitForInput();
+          if(!userAddress) await connect();
           level.abi = ["function isOracle(address _checkAddress) public view returns (bool)"];
           level.interface = new ethers.Contract(level.contract, level.abi, signer);
           level.complete = await level.interface.isOracle(userAddress);
@@ -341,7 +342,7 @@ contract Whale {
         await wait(3000);
         addComs('Sophie',`There is a updatePrice() function but you'll need to write a smart contract to break this one`);
         await wait(4000);
-        addComs('Cathy',`Make sure you set the price to ${level.priceTarget} and then let us know here when it's done. As always just ask for help in chat if you need it`);
+        addComs('Cathy',`Make sure you set the price to $${level.priceTarget} and then let us know here when it's done. As always just ask for help in chat if you need it`);
         await addInstructions(`Check out the contract code and updatePrice() function at <a href="https://goerli.etherscan.io/address/${level.contract}#code" target="_blank">${level.contract}</a>`);
         await wait(500);
         await addInstructions(`Head over to Remix and create a new contract <a href="https://remix.ethereum.org" target="_blank">https://remix.ethereum.org</a>`);
@@ -368,6 +369,7 @@ contract PriceUpdater {
         await wait(500);
         while (!level.complete) {
           await waitForInput();
+          if(!userAddress) await connect();
           level.abi = ["function usdPrice() public view returns (uint256)"];
           level.interface = new ethers.Contract(level.contract, level.abi, signer);
           const usdPrice = await level.interface.usdPrice();
@@ -405,6 +407,7 @@ contract PriceUpdater {
         await addInstructions(`Put a message in chat when you have some CBDC tokens in your wallet or type help if you need assistance`);
         while (!level.complete) {
           await waitForInput();
+          if(!userAddress) await connect();
           level.abi = ["function balanceOf(address account) public view returns (uint256)"];
           level.interface = new ethers.Contract(level.tokenContract, level.abi, signer);
           const balance = await level.interface.balanceOf(userAddress);
@@ -441,6 +444,7 @@ contract PriceUpdater {
         await addInstructions(`Send us a message when you have your name in the leaderboard`);
         while (!level.complete) {
           await waitForInput();
+          if(!userAddress) await connect();
           level.abi = ["function position(address) public view returns (uint256)"];
           level.interface = new ethers.Contract(level.contract, level.abi, signer);
           const position = await level.interface.position(userAddress);
