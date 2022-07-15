@@ -331,7 +331,7 @@ contract Whale {
         // Stop Market Manipulation
         await startNewLevel(4);
         level.contract = `0x094251c982cb00B1b1E1707D61553E304289D4D8`; // CBDC.sol
-        level.priceTarget = Math.round(Math.random() * 100);
+        level.priceTarget = Math.round((Math.random() * 990) + 10);
         await wait(1000);
         addComs('James',`They are manipulating markets by setting a USD price within the smart contract. We need to reduce the USD price`);
         await wait(3000);
