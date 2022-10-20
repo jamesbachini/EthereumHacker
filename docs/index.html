@@ -221,7 +221,7 @@
             localStorage.setItem('s1e1', true);
             await wait(5000);
             menu();
-          } else {
+          } else if (!level.lastMessage.toLowerCase().includes('help')) {
             addComs('Sophie',`I'm not seeing the NFT in your wallet, use the balanceOf() function on Etherscan's "Read Functions" tab to check`);
           }
         }
@@ -321,7 +321,7 @@ contract Whale {
             localStorage.setItem('s1e3', true);
             await wait(5000);
             menu();
-          } else {
+          } else if (!level.lastMessage.toLowerCase().includes('help')) {
             addComs('Sophie',`Your wallet isn't currently registered as an oracle`);
             
           }
@@ -379,7 +379,7 @@ contract PriceUpdater {
             localStorage.setItem('s1e4', true);
             await wait(5000);
             menu();
-          } else {
+          } else if (!level.lastMessage.toLowerCase().includes('help')) {
             addComs('Sophie',`usdPrice is currently $${usdPrice.toNumber()} we need you to set it to $${level.priceTarget}`);
           }
         }
@@ -417,7 +417,7 @@ contract PriceUpdater {
             localStorage.setItem('s1e5', true);
             await wait(5000);
             menu();
-          } else {
+          } else if (!level.lastMessage.toLowerCase().includes('help')) {
             addComs('Sophie',`Your CBDC balance is currently ${balance.toNumber()} we need some of those tokens`);
           }
         }
@@ -456,7 +456,7 @@ contract PriceUpdater {
             localStorage.setItem('s1e6', true);
             await wait(5000);
             menu();
-          } else {
+          } else if (!level.lastMessage.toLowerCase().includes('help')) {
             addComs('Sophie',`You aren't showing on the leaderboard yet`);
           }
         }
@@ -469,7 +469,7 @@ contract PriceUpdater {
         const abi = ["function leaderboard(uint256) public view returns (string)","function leaderboardLength() public view returns (uint256)"];
         const interface = new ethers.Contract(contract, abi, signer);
         let first = `<h2>FIRST</h2><ul>`;
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 10; i++) {
           try {
             const name = await interface.leaderboard(i);
             const cleanName = name.split(/[^a-zA-Z0-9_@\.]/).join('');
@@ -483,7 +483,7 @@ contract PriceUpdater {
         const latestRes = await interface.leaderboardLength();
         const noOfPlayers = latestRes.toNumber();
         let latest = `<h2>LATEST</h2><ul>`;
-        for (let i = noOfPlayers; i > noOfPlayers-5; i--) {
+        for (let i = noOfPlayers; i > noOfPlayers-10; i--) {
           try {
             const name = await interface.leaderboard(i);
             const cleanName = name.split(/[^a-zA-Z0-9_@\.]/).join('');
@@ -526,7 +526,7 @@ contract PriceUpdater {
           if (level.help == 3) addComs('Cathy',`Don't forget you need to execute _approve(address(this),multisig,amount) on your own ERC20 to allow the multisig contract to move tokens when calling transferFrom()`);
           if (level.help > 3) addComs('James',`Take a look at this code for inspiration: <a href="https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/MyERC20.sol" target="_blank">https://github.com/jamesbachini/EthereumHacker/blob/main/contracts/MyERC20.sol</a> try that.`);
         }
-        if (level.id == 5) {
+        if (level.id == 6) {
           if (level.help == 1) addComs('James',`The code is written in hexadecimal format, perhaps we can convert it to a text string.`);
           if (level.help == 0) addComs('Sophie',`There is another function at the bottom of the contract which might help.`);
           if (level.help == 2) addComs('James',`Or maybe just use an online binary > text converter`);
