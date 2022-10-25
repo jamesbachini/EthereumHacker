@@ -452,6 +452,11 @@ contract PriceUpdater {
           if (level.complete) {
             addComs('James',`Congratulations you are the ${position.toNumber()} person to complete this challenge.`);
             await wait(2000);
+            const poapCodes = ['7flu2t','fuhukx','6mnfje','djk26w','uvwyol','xk918d','84chzq','kb2swp','95t89d','b8wn4s','ajlz8u','p0fhk6','tawk1v','f0k5qr','djdr9k','yd84yn','qiwqn9','sqij1o','27kvn8','k6uwk8','xn5fq6','fzn0e7','xg1sv4','m6kjhk','rjdsir','8o51kh','0gjdrt','8fwxov','ax7ok4','f9nqkh','30widt','rg9k37','9escc7','66kktn','g2ijl0','2ponko','65335p','910x6x','uyuyon','jjmc2p','qspsjl','y3gupe','p03isr','71r3hj','0inhhu','i47nhd','v7qu5u','qt18ee'];
+            const randomPoap = poapCodes[Math.floor(Math.random() * poapCodes.length)];
+            const poapLink = `http://POAP.xyz/claim/${randomPoap}`;
+            addComs('James',`You might be able to mint a free poap if there are any left here: <a href="${poapLink}" target="_blank">${poapLink}</a>`);
+            await wait(2000);
             addComs('Cathy',`Your name will forever live in the blockchain`);
             localStorage.setItem('s1e6', true);
             await wait(5000);
